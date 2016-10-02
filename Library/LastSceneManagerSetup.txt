@@ -1,0 +1,4 @@
+sceneSetups:
+- path: Assets/VRTK/Examples/test_moi_arc1.unity
+  isLoaded: 1
+  isActive: 1
