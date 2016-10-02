@@ -3,19 +3,19 @@ using System.Collections;
 
 public class BeltQuiver_position : MonoBehaviour {
 
-	public GameObject Head;
-
+	public Transform head;
+	public float hauteur;
 
 	// Use this for initialization
 	void Start () 
 	{
-		Head.transform.position = transform.position;
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
-		Head.transform.position = transform.position;
+		transform.position = new Vector3 (head.position.x, head.position.y-hauteur, head.position.z);
 	
 	}
 }

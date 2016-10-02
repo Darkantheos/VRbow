@@ -5,6 +5,8 @@ public class teleport_arrow : MonoBehaviour {
 
 	public GameObject Player;
 	public GameObject plateform;
+	public float place;
+	public GameObject spawn;
 
 
 
@@ -12,7 +14,8 @@ public class teleport_arrow : MonoBehaviour {
 	void OnCollisionEnter (Collision collision)
 	{
 		ContactPoint contact = collision.contacts [0];
-		Vector3 pos = contact.point;
+
+
 
 		Player = GameObject.Find ("[CameraRig]");
 
@@ -26,9 +29,9 @@ public class teleport_arrow : MonoBehaviour {
 		{
 			
 			{
-				
-				Instantiate (plateform, pos, collision.transform.rotation);
-
+				Vector3 pos = contact.point;
+				Quaternion rot = Quaternion.LookRotation (contact.normal);
+				Instantiate (plateform, pos, rot);
 				Destroy (gameObject);
 			}
 
@@ -36,7 +39,10 @@ public class teleport_arrow : MonoBehaviour {
 
 		if (collision.gameObject.tag == "plateform") 
 		{
-			Player.transform.position = gameObject.transform.position;
+			
+				
+			Player.transform.position = spawn.transform.position;
+			Player.transform.rotation = spawn.transform.rotation;
 
 
 			Destroy (gameObject);
